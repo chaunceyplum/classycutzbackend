@@ -14,7 +14,7 @@ import signUpRouter from './signUpRouter.js'
 const app = Express()
 dotenv.config()
 
-const port = process.env.PORT
+const port = process.env.PORT || 80
 
 app.use(Express.json())
 app.use(morgan('tiny'))
