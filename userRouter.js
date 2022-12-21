@@ -8,12 +8,13 @@ const userRouter = express.Router()
 
 //sends a list of all users
 userRouter.route('/').get((req, res, next) => {
-  Users.find({}, (data, err) => {
-    data ? console.log(data) : console.log(err)
-  })
+  // Users.find({}, (data, err) => {
+  //   data ? console.log(data) : console.log(err)
+  // })
+  let data = 'welcome to /user'
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/vnd.api+json')
-  res.json({ data })
+  res.send(data)
 })
 // checks if User is in database
 userRouter.route('/').post((req, res) => {
