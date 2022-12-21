@@ -7,7 +7,7 @@ import mongoose, { createConnection, Schema } from 'mongoose'
 import morgan from 'morgan'
 import { MongoClient, ServerApiVersion } from 'mongodb'
 import dotenv from 'dotenv'
-import axios from 'axios'
+
 import userRouter from './userRouter.js'
 import signUpRouter from './signUpRouter.js'
 
