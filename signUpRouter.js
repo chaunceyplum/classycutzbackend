@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import { userSchema, Users, connect, uri } from './mongoo.js'
+import { userSchema, Users, connect, URI } from './mongoo.js'
 
 const signUpRouter = express.Router()
 

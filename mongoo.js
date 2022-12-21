@@ -1,17 +1,17 @@
 import express from 'express'
 import mongoose, { createConnection, Schema } from 'mongoose'
 import { MongoClient, ServerApiVersion } from 'mongodb'
+import dotenv from 'dotenv'
 
-export const uri =
-  'mongodb+srv://peso:chaPeso@cluster0.yy5c5.mongodb.net/myFirstDatabase'
-
-export const connect = mongoose.connect(uri, {
+dotenv.config()
+export const URI = process.env.URI
+export const connect = mongoose.connect(URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 
 connect.then(
-  () => console.log('Connected correctly to server'),
+  () => console.log('Connected correctly to database'),
   (err) => console.log(err)
 )
 export const userSchema = new mongoose.Schema(
@@ -25,4 +25,4 @@ export const userSchema = new mongoose.Schema(
 )
 export const Users = mongoose.model('UserData', userSchema)
 
-export default { Users, userSchema, connect, uri }
+export default { Users, userSchema, connect, URI }

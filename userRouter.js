@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose, { createConnection, Schema } from 'mongoose'
-import { userSchema, Users, connect, uri } from './mongoo.js'
+import { userSchema, Users, connect, URI } from './mongoo.js'
 
 const userRouter = express.Router()
 
@@ -8,7 +8,9 @@ const userRouter = express.Router()
 
 //sends a list of all users
 userRouter.route('/').get((req, res, next) => {
-  Users.find({}, data).then(data ? console.log(data) : console.log(err))
+  Users.find({}, (data, err) => {
+    data ? console.log(data) : console.log(err)
+  })
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/vnd.api+json')
   res.json({ data })
