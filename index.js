@@ -30,8 +30,8 @@ app.use('/invisr', invisrRouter)
 app.use('/user', userRouter)
 app.use('/signUp', signUpRouter)
 
-app.listen(port, () => {
-  console.log(`server started on ${port}`)
+app.listen(port, (err) => {
+  err ? console.log(err) : console.log(`server started on ${port}`)
 })
 
 export default app
