@@ -7,14 +7,17 @@ const userRouter = express.Router()
 //routing
 const saltRounds = 10
 //sends a list of all users
-userRouter.route('/').get((req, res, next) => {
-  // Users.find({}, (data, err) => {
-  //   data ? console.log(data) : console.log(err)
+userRouter.route('/').get(async (req, res, next) => {
+  // Users.find({}, async(data, err) => {
+  //    data ? console.log(data) : console.log(err)
+
   // })
-  let data = 'welcome to /user'
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/vnd.api+json')
-  res.send(data)
+  let users = await Users.find({})
+  res.send(users)
+  // let data = 'welcome to /user'
+  // res.statusCode = 200
+  // res.setHeader('Content-Type', 'application/vnd.api+json')
+  // res.send(data)
 })
 // checks if User is in database
 userRouter.route('/').post(async (req, res) => {
