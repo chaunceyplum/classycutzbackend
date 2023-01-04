@@ -29,7 +29,7 @@ userRouter.route('/').post(async (req, res) => {
       if (cmp) {
         //   ..... further code to maintain authentication like jwt or sessions
         res.json({
-          LoggedIn: false,
+          LoggedIn: true,
           loading: false,
           error: null,
           auth: 'OK',
