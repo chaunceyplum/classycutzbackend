@@ -1,6 +1,6 @@
 import express from 'express'
-import mongoose, { createConnection, Schema } from 'mongoose'
-import { MongoClient, ServerApiVersion } from 'mongodb'
+import mongoose from 'mongoose'
+
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -14,6 +14,19 @@ connect.then(
   () => console.log('Connected correctly to database'),
   (err) => console.log(err)
 )
+export const contactSchema = new mongoose.Schema(
+  {
+    _id: String,
+    firstName: String,
+    lastName: String,
+    date: Date,
+    email: String,
+  },
+  {
+    collection: 'contactInfo',
+  }
+)
+export const Contacts = mongoose.model('ContactInfo', contactSchema)
 export const userSchema = new mongoose.Schema(
   {
     _id: String,
@@ -23,6 +36,7 @@ export const userSchema = new mongoose.Schema(
   },
   { collection: 'userData' }
 )
+
 export const Users = mongoose.model('UserData', userSchema)
 
-export default { Users, userSchema, connect, URI }
+export default { Contacts, Users, userSchema, connect, URI }
