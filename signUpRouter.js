@@ -14,7 +14,12 @@ signUpRouter.route('/').post(async (req, res) => {
       _id: mongoose.Types.ObjectId(),
       email: req.body.email,
       password: hashedPwd,
+      username: req.body.username,
+      console: req.body.console,
+      gamertag: req.body.gamertag,
       name: req.body.name,
+      date: new Date(),
+      message: 'OK',
     })
     console.log(`New User Added ${insertResult.email}`)
     res.send(insertResult)

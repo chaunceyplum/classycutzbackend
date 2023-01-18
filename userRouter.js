@@ -22,29 +22,42 @@ userRouter.route('/').get(async (req, res, next) => {
 // checks if User is in database
 userRouter.route('/').post(async (req, res) => {
   try {
-    const user = await Users.findOne({ email: req.body.email })
-    console.log(user)
+    const user = await Users.exists({
+      email: req.body.email,
+    })
+
     if (user) {
-      const cmp = await bcrypt.compare(req.body.password, user.password)
-      if (cmp) {
-        //   ..... further code to maintain authentication like jwt or sessions
-        res.json({
-          LoggedIn: true,
-          loading: false,
-          error: null,
-          auth: 'OK',
-          email: `${req.body.email}`,
-          name: `${req.body.name}`,
-        })
+      const userObj = await Users.findById(user._id)
+
+      //console.log(userObj)
+      if (userObj && user) {
+        const cmp = await bcrypt.compare(req.body.password, userObj.password)
+        if (cmp) {
+          //   ..... further code to maintain authentication like jwt or sessions
+
+          res.json(userObj)
+        } else {
+          res.send('Username already taken .')
+        }
       } else {
         res.send('Wrong username or password.')
       }
     } else {
-      res.send('Wrong username or password.')
+      res.json({
+        loggedIn: false,
+        name: '',
+        email: '',
+        message: 'Wrong email or password',
+      })
     }
   } catch (error) {
     console.log(error)
-    res.status(500).send('Internal Server error Occured')
+    res.status(500).json({
+      loggedIn: false,
+      name: '',
+      email: '',
+      message: 'Wrong email or password',
+    })
   }
 })
 // userRouter.route('/').post((req, res) => {
