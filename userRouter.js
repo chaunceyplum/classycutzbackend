@@ -37,10 +37,20 @@ userRouter.route('/').post(async (req, res) => {
 
           res.json(userObj)
         } else {
-          res.send('Username already taken .')
+          res.json({
+            loggedIn: false,
+            name: '',
+            email: '',
+            message: 'Username already taken ',
+          })
         }
       } else {
-        res.send('Wrong username or password.')
+        res.json({
+          loggedIn: false,
+          name: '',
+          email: '',
+          message: 'Wrong email or password',
+        })
       }
     } else {
       res.json({

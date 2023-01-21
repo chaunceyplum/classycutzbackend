@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import userRouter from './userRouter.js'
 import signUpRouter from './signUpRouter.js'
 import contactRouter from './contactRouter.js'
-
+import postRouter from './postRouter.js'
 const app = Express()
 dotenv.config()
 
@@ -31,6 +31,7 @@ app.use('/invisr', invisrRouter)
 app.use('/user', userRouter)
 app.use('/signUp', signUpRouter)
 app.use('/contactInfo', contactRouter)
+app.use('/posts', postRouter)
 
 app.listen(port, (err) => {
   err ? console.log(err) : console.log(`server started on ${port}`)

@@ -42,5 +42,22 @@ export const userSchema = new mongoose.Schema(
 )
 
 export const Users = mongoose.model('UserData', userSchema)
+export const postSchema = new mongoose.Schema(
+  {
+    _id: String,
+    email: String,
+    username: String,
+    console: String,
+    gamertag: String,
+    likedBy: Array,
+    timePosted: Date,
+    updated: Date,
+    post: String,
+  },
+  {
+    collection: 'userPosts',
+  }
+)
+export const Posts = mongoose.model('userPosts', postSchema)
 
 export default { Contacts, Users, userSchema, connect, URI }
