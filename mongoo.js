@@ -53,6 +53,7 @@ export const postSchema = new mongoose.Schema(
     timePosted: Date,
     updated: Date,
     post: String,
+    title: String,
   },
   {
     collection: 'userPosts',

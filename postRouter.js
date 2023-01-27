@@ -61,6 +61,7 @@ postRouter.route('/').post(async (req, res) => {
         timePosted: new Date(),
         updated: new Date(),
         post: req.body.post,
+        title: req.body.post,
       })
       res.json({
         user: insertResult,
