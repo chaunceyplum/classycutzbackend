@@ -16,14 +16,15 @@ postRouter.route('/').post(async (req, res) => {
     })
 
     if (doesPostExist) {
-      const insertResult = await Posts.updateMany(
-        { title: req.body.title },
-        { post: req.body.post },
-        { updated: new Date() }
-      )
+      const filter = { email: req.body.email }
+      const update = {
+        title: req.body.title,
+        post: req.body.post,
+        updated: new Date(),
+      }
+      const ress = await Posts.findOneAndUpdate(filter, update)
       res.json({
-        user: insertResult,
-        message: `sucessfully updated post at ${insertResult.updated}`,
+        message: `sucessfully updated post `,
       })
     } else {
       const insertResult = await Posts.create({
