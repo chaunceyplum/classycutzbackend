@@ -1,6 +1,6 @@
-import { Discord } from 'discord.js'
-//const Discord = require('discord.js')
-const client = new Discord.Client()
+import Discord from 'discord.js'
+
+export const client = new Discord.Client()
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`)
