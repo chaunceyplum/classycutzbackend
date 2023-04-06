@@ -31,7 +31,7 @@ export const newportContactSchema = new mongoose.Schema(
   {
     _id: String,
     firstName: String,
-    lastName: String,
+    message: String,
     date: Date,
     email: String,
   },
