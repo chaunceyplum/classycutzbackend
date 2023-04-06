@@ -26,6 +26,23 @@ export const contactSchema = new mongoose.Schema(
   }
 )
 export const Contacts = mongoose.model('ContactInfo', contactSchema)
+
+export const newportContactSchema = new mongoose.Schema(
+  {
+    _id: String,
+    firstName: String,
+    lastName: String,
+    date: Date,
+    email: String,
+  },
+  {
+    collection: 'newportContactSchema',
+  }
+)
+export const NewportContacts = mongoose.model(
+  'NewportContactInfo',
+  newportContactSchema
+)
 export const userSchema = new mongoose.Schema(
   {
     _id: String,
