@@ -12,19 +12,22 @@ postRouter.route('/').get(async (req, res) => {
 postRouter.route('/').post(async (req, res) => {
   try {
     const doesPostExist = await Posts.exists({
-      email: req.body.email,
+      _id: req.body._id,
     })
 
     if (doesPostExist) {
-      const filter = { email: req.body.email }
-      const update = {
-        title: req.body.title,
-        post: req.body.post,
-        updated: new Date(),
-      }
-      const ress = await Posts.findOneAndUpdate(filter, update)
+      // const filter = { email: req.body.email }
+      // const update = {
+      //   title: req.body.title,
+      //   post: req.body.post,
+      //   updated: new Date(),
+      // }
+      // const res = await Posts.findOneAndUpdate(filter, update)
+      // res.json({
+      //   message: `sucessfully updated post `,
+      // })
       res.json({
-        message: `sucessfully updated post `,
+        message: 'something went wrong',
       })
     } else {
       const insertResult = await Posts.create({
