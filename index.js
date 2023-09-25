@@ -1,6 +1,5 @@
 import Express from 'express'
 import cutsRouter from './cutsRouter.js'
-import invisrRouter from './invisrRouter.js'
 
 import cors from 'cors'
 import mongoose, { createConnection, Schema } from 'mongoose'
@@ -13,6 +12,7 @@ import signUpRouter from './signUpRouter.js'
 import contactRouter from './contactRouter.js'
 import postRouter from './postRouter.js'
 import NewportContactsRouter from './newportContactRouter.js'
+
 const app = Express()
 dotenv.config()
 
@@ -28,7 +28,7 @@ app.use(
 )
 
 app.use('/', cutsRouter)
-app.use('/invisr', invisrRouter)
+
 app.use('/user', userRouter)
 app.use('/signUp', signUpRouter)
 app.use('/contactInfo', contactRouter)
