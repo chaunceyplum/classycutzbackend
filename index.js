@@ -23,7 +23,10 @@ app.use(morgan('tiny'))
 
 app.use(
   cors({
-    origin: '*',
+  "origin": "*",
+  "methods": "GET,POST",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
   })
 )
 
